@@ -1,1 +1,0 @@
-from staging.customer
