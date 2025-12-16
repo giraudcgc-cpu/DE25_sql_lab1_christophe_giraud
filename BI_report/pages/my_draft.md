@@ -63,7 +63,7 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
         COUNT(fa.film_id) AS "Movie count"
     FROM
         actor a
-    LEFT JOIN 
+    JOIN 
         film_actor fa ON a.actor_id = fa.actor_id
     GROUP BY
         a.actor_id, a.first_name, a.last_name
@@ -74,7 +74,7 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
 ```
 
 
-## <u>Own findings 1/3: Top 3 most rented categories</u>
+## <u>Own findings 1/4: Top 3 most rented categories</u>
 ```sql categories
     SELECT
         c.name as Category,
@@ -92,7 +92,7 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
     LIMIT 3;
 ```
 
-## <u>Own findings 2/3: Churn customers list<u>
+## <u>Own findings 2/4: Churn customers list<u>
 ```sql churn
     SELECT
         cust.customer_id AS "Customer nber",
@@ -109,7 +109,7 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
 ```
 
 
-## <u>Own findings 3/3: Stores revenues in 2006<u>
+## <u>Own findings 3/4: Stores revenues in 2006<u>
 ```sql stores
     SELECT 
         s.store_id AS "Store ID",
@@ -131,6 +131,24 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
         "Total revenue" ASC;
 ```
 
+
+## <u>Own findings 4/4: What ratings have our films?</u>
+```sql ratings
+SELECT
+    rating AS name,
+    COUNT(*) AS value
+FROM film 
+GROUP BY rating
+ORDER BY value DESC
+```
+<ECharts config={{
+title:{text: 'Films Content Rating Sytem'},
+tooltip:{formatter: '{b}: {c} ({d}%)'},
+series:[{type: 'pie', data: [...ratings]}]
+}}/>
+Source: https://docs.evidence.dev/components/charts/custom-echarts
+
+
 ## <u>Top 5 Customers Per Total Spend</u>
 ```sql top5
     SELECT 
@@ -139,7 +157,7 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
         SUM(p.amount) AS "Total spend"
     FROM
         customer cust 
-    LEFT JOIN payment p ON cust.customer_id = p.customer_id 
+    JOIN payment p ON cust.customer_id = p.customer_id 
     GROUP BY
         cust.customer_id, "Customer name" 
     ORDER BY
