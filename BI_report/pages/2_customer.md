@@ -33,7 +33,7 @@
     ORDER BY 
         co.country;
 ```
-## <u>Top 5 Customers Per Total Spend</u>
+## <u>Top 5 Customers Per Total Spend (task2a)</u>
 ```sql top5
     SELECT 
         cust.customer_id AS "Customer nber", 
@@ -85,7 +85,7 @@
   series:[{type:'pie',data:[{value:111,name:'Australia'},{value:114,name:'Canada'}]}]
 }} />
 
-## <u>What Do They Watch?</u>
+## <u>What Do They Watch? (task1f1)</u>
 ```sql category_Australia
     SELECT
         cat.name AS Category,
