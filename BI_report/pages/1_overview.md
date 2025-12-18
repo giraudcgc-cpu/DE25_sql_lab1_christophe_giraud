@@ -57,11 +57,9 @@ Public repo: https://github.com/giraudcgc-cpu/DE25_sql_lab1_christophe_giraud
 ```sql duration
     SELECT
         MIN(length) as "Shortest Duration",
-        SUM(CASE WHEN length = 46 THEN 1 ELSE 0 END) AS "Movie lasting 46 min",
         ROUND(AVG(length)) as "Mean Duration",
         MEDIAN(length) as "Median Duration", 
         MAX(length) as "Longest Duration",
-        SUM(CASE WHEN length = 185 THEN 1 ELSE 0 END) AS "Movies lasting 185min"
     FROM
         film;   
 ```
